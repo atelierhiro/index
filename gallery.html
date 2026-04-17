@@ -330,27 +330,51 @@
     </div>
 
     <script src="delivery.js"></script>
-    <script src="gallery-data.js"></script>
     <script>
-        // ── 作品グリッド生成 ──
-        const grid = document.getElementById('worksGrid');
-        let currentIndex = 0;
+        // ============================================================
+        //  GitHub API で portraits フォルダの画像を自動取得・表示
+        // ============================================================
+        const GITHUB_API = 'https://api.github.com/repos/atelierhiro/index/contents/portraits';
+        const IMAGE_EXTS = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
 
-        if (typeof GALLERY_IMAGES !== 'undefined' && GALLERY_IMAGES.length > 0) {
-            GALLERY_IMAGES.forEach((item, i) => {
-                const div = document.createElement('div');
-                div.className = 'work-item';
-                div.innerHTML = `<img src="${item.src}" alt="似顔絵作品 ${i + 1}" loading="lazy" />`;
-                div.addEventListener('click', () => openLightbox(i));
-                grid.appendChild(div);
+        const grid        = document.getElementById('worksGrid');
+        const lightbox    = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const counter     = document.getElementById('lightboxCounter');
+        let loadedImages  = [];
+        let currentIndex  = 0;
+
+        // ── ローディング表示 ──
+        grid.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:var(--text-lt);padding:40px 0;">読み込み中…</p>';
+
+        fetch(GITHUB_API)
+            .then(r => r.json())
+            .then(files => {
+                // 画像ファイルだけ抽出してファイル名順に並べる
+                loadedImages = files
+                    .filter(f => IMAGE_EXTS.includes(f.name.split('.').pop().toLowerCase()))
+                    .sort((a, b) => a.name.localeCompare(b.name, 'ja'));
+
+                grid.innerHTML = '';
+
+                if (loadedImages.length === 0) {
+                    grid.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:var(--text-lt);padding:40px 0;">作品を準備中です。しばらくお待ちください。</p>';
+                    return;
+                }
+
+                loadedImages.forEach((file, i) => {
+                    const div = document.createElement('div');
+                    div.className = 'work-item';
+                    div.innerHTML = `<img src="${file.download_url}" alt="似顔絵作品 ${i + 1}" loading="lazy" />`;
+                    div.addEventListener('click', () => openLightbox(i));
+                    grid.appendChild(div);
+                });
+            })
+            .catch(() => {
+                grid.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:var(--text-lt);padding:40px 0;">作品を準備中です。しばらくお待ちください。</p>';
             });
-        }
 
         // ── ライトボックス ──
-        const lightbox   = document.getElementById('lightbox');
-        const lightboxImg = document.getElementById('lightboxImg');
-        const counter    = document.getElementById('lightboxCounter');
-
         function openLightbox(index) {
             currentIndex = index;
             showImage();
@@ -361,10 +385,10 @@
         function showImage() {
             lightboxImg.style.opacity = '0';
             setTimeout(() => {
-                lightboxImg.src = GALLERY_IMAGES[currentIndex].src;
+                lightboxImg.src = loadedImages[currentIndex].download_url;
                 lightboxImg.style.opacity = '1';
             }, 120);
-            counter.textContent = (currentIndex + 1) + ' / ' + GALLERY_IMAGES.length;
+            counter.textContent = (currentIndex + 1) + ' / ' + loadedImages.length;
         }
 
         function closeLightbox() {
@@ -373,12 +397,12 @@
         }
 
         function prevImage() {
-            currentIndex = (currentIndex - 1 + GALLERY_IMAGES.length) % GALLERY_IMAGES.length;
+            currentIndex = (currentIndex - 1 + loadedImages.length) % loadedImages.length;
             showImage();
         }
 
         function nextImage() {
-            currentIndex = (currentIndex + 1) % GALLERY_IMAGES.length;
+            currentIndex = (currentIndex + 1) % loadedImages.length;
             showImage();
         }
 
@@ -387,7 +411,7 @@
         document.getElementById('lightboxNext').addEventListener('click', nextImage);
         lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
         document.addEventListener('keydown', e => {
-            if (e.key === 'Escape')      closeLightbox();
+            if (e.key === 'Escape')     closeLightbox();
             if (e.key === 'ArrowLeft')  prevImage();
             if (e.key === 'ArrowRight') nextImage();
         });
