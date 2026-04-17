@@ -1,1 +1,1 @@
-var DELIVERY_DATE = "4月30日";
+var DELIVERY_DATE = "約2週間";
