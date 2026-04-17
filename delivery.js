@@ -1,0 +1,1 @@
+var DELIVERY_DATE = "4月25日";
