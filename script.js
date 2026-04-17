@@ -81,6 +81,11 @@ document.getElementById('backToTop').addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
+/* ── DELIVERY DATE ───────────────────────────────── */
+if (typeof DELIVERY_DATE !== 'undefined') {
+    document.getElementById('deliveryDate').textContent = DELIVERY_DATE;
+}
+
 /* ── GALLERY DRAG SCROLL ─────────────────────────── */
 const gallery = document.getElementById('galleryScroll');
 if (gallery) {

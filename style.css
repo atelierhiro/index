@@ -1700,6 +1700,37 @@ button {
     color: #fff;
 }
 
+/* ── DELIVERY BADGE ──────────────────────────────── */
+.delivery-badge {
+    position: fixed;
+    bottom: 24px;
+    left: 20px;
+    z-index: 50;
+    background: #fff;
+    border: 2px solid var(--coral);
+    border-radius: var(--radius-md);
+    padding: 10px 16px;
+    box-shadow: 0 4px 16px rgba(255, 107, 107, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    min-width: 100px;
+}
+
+.delivery-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: var(--coral);
+    letter-spacing: 0.05em;
+}
+
+.delivery-date {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text);
+}
+
 /* ── BACK TO TOP ─────────────────────────────────── */
 .back-to-top {
     position: fixed;
