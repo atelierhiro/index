@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>アトリエヒロ | 似顔絵ギフト専門店 — 誕生日・還暦・結婚祝いに</title>
+    <meta name="description"
+        content="アトリエヒロは、色紙に一から手描きで仕上げる似顔絵専門店です。生成AIにはない筆の温もりを込めたオーダーメイド作品を。誕生日・還暦・結婚祝い・退職祝いなど大切な方への贈り物に。送料無料・ラッピング無料。" />
+    <meta name="keywords" content="似顔絵,ギフト,プレゼント,誕生日,還暦,結婚祝い,退職祝い,オーダーメイド,アトリエヒロ" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300;400;500;700;800&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <!-- ===== LOADING ===== -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-inner">
+            <div class="loading-icon">🎨</div>
+            <div class="loading-title">アトリエヒロ</div>
+            <div class="loading-bar-wrap">
+                <div class="loading-bar-fill" id="loadingFill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== HEADER ===== -->
+    <header class="site-header" id="siteHeader">
+        <div class="header-inner">
+            <a href="#top" class="logo">
+                <span class="logo-icon">🎨</span>
+                <span class="logo-text">アトリエ<span class="logo-accent">ヒロ</span></span>
+            </a>
+            <nav class="nav-links" id="navLinks">
+                <a href="#about" class="nav-link">似顔絵について</a>
+                <a href="#samples" class="nav-link">作品ギャラリー</a>
+                <a href="#menu" class="nav-link">料金メニュー</a>
+                <a href="#flow" class="nav-link">ご注文の流れ</a>
+                <a href="#occasions" class="nav-link">おすすめシーン</a>
+                <a href="#faq" class="nav-link">よくある質問</a>
+            </nav>
+            <a href="https://atelierstore.theshop.jp/" class="header-order-btn" target="_blank" rel="noopener">
+                今すぐ注文 →
+            </a>
+            <button class="hamburger" id="hamburger" aria-label="メニューを開く">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ===== COUPON BANNER ===== -->
+    <div class="coupon-banner">
+        <div class="coupon-inner">
+            <div class="coupon-left">
+                <span class="coupon-tag">🎟️ 限定クーポン</span>
+                <span class="coupon-text">最大 <strong>¥2,000 OFF</strong><span class="coupon-pc"> クーポン配布中！</span></span>
+            </div>
+            <a href="https://atelierstore.theshop.jp/" class="coupon-btn" target="_blank" rel="noopener">クーポンを取得 →</a>
+        </div>
+    </div>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-close" id="mobileClose" aria-label="メニューを閉じる">✕</button>
+        <nav class="mobile-nav">
+            <a href="#about" class="mobile-nav-link">似顔絵について</a>
+            <a href="#samples" class="mobile-nav-link">作品ギャラリー</a>
+            <a href="#menu" class="mobile-nav-link">料金メニュー</a>
+            <a href="#flow" class="mobile-nav-link">ご注文の流れ</a>
+            <a href="#occasions" class="mobile-nav-link">おすすめシーン</a>
+            <a href="#faq" class="mobile-nav-link">よくある質問</a>
+        </nav>
+        <a href="https://atelierstore.theshop.jp/" class="mobile-order-btn" target="_blank">🛒 今すぐ注文する</a>
+    </div>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="top">
+        <div class="hero-bg-art" aria-hidden="true">
+            <span class="bubble b1">🎨</span>
+            <span class="bubble b2">🌸</span>
+            <span class="bubble b3">🎉</span>
+            <span class="bubble b4">⭐</span>
+            <span class="bubble b5">🎁</span>
+            <span class="bubble b6">💕</span>
+            <span class="bubble b7">🌟</span>
+            <span class="bubble b8">🎂</span>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge animate-in" style="--delay:0.1s">✦ 送料無料・ラッピング無料 ✦</div>
+            <h1 class="hero-title animate-in" style="--delay:0.2s">
+                <span class="hero-title-sub">世界にひとつの</span>
+                <span class="hero-title-main">手描き<em>似顔絵</em>ギフト</span>
+                <span class="hero-title-tag">大切な人へ、心に届く贈り物を</span>
+            </h1>
+            <p class="hero-desc animate-in" style="--delay:0.35s">
+                誕生日・還暦・結婚祝い・退職祝い……<br />
+                日本全国から愛されるアトリエヒロの温かい似顔絵で、<br class="pc-only" />
+                特別な記念日をもっと素敵に。
+            </p>
+            <div class="hero-ctas animate-in" style="--delay:0.45s">
+                <a href="https://atelierstore.theshop.jp/" class="btn-main" target="_blank" rel="noopener">
+                    🛒 ショップで注文する
+                </a>
+                <a href="#samples" class="btn-sub">作品を見てみる</a>
+            </div>
+            <div class="hero-trust animate-in" style="--delay:0.55s">
+                <div class="trust-item">
+                    <span class="trust-icon">🚚</span>
+                    <span>送料無料</span>
+                </div>
+                <div class="trust-item">
+                    <span class="trust-icon">🎀</span>
+                    <span>ラッピング無料</span>
+                </div>
+                <div class="trust-item">
+                    <span class="trust-icon">✏️</span>
+                    <span>修正1回無料</span>
+                </div>
+                <div class="trust-item">
+                    <span class="trust-icon">⚡</span>
+                    <span>お急ぎ対応可</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-image animate-in" style="--delay:0.3s">
+            <div class="hero-img-frame"
+                style="background:#fff; border-radius:32px; padding:40px; box-shadow:0 16px 48px rgba(0,0,0,0.08); display:flex; align-items:center; justify-content:center; color:#FF6B6B;">
+                <svg viewBox="0 0 200 150" class="line-art" style="width:100%; height:auto; stroke-width:3;">
+                    <rect x="15" y="15" width="170" height="120" rx="12" stroke-dasharray="8 6" fill="none" />
+                    <circle cx="65" cy="65" r="22" />
+                    <path d="M 25 135 Q 65 90 95 135" />
+                    <circle cx="58" cy="65" r="3" fill="currentColor" stroke="none" />
+                    <circle cx="72" cy="65" r="3" fill="currentColor" stroke="none" />
+                    <path d="M 61 75 Q 65 80 69 75" />
+                    <circle cx="135" cy="55" r="25" />
+                    <path d="M 95 135 Q 135 75 175 135" />
+                    <circle cx="127" cy="55" r="3.5" fill="currentColor" stroke="none" />
+                    <circle cx="143" cy="55" r="3.5" fill="currentColor" stroke="none" />
+                    <path d="M 130 65 Q 135 72 140 65" />
+                </svg>
+                <div class="hero-img-badge">
+                    <span class="badge-num">¥7,980〜</span>
+                    <span class="badge-txt">税込・1名様</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SCROLL TICKER ===== -->
+    <div class="ticker-wrap" aria-hidden="true">
+        <div class="ticker-track">
+            <span>誕生日</span><span class="sep">✦</span>
+            <span>還暦・喜寿・米寿</span><span class="sep">✦</span>
+            <span>結婚祝い・金婚式</span><span class="sep">✦</span>
+            <span>退職祝い</span><span class="sep">✦</span>
+            <span>出産内祝い</span><span class="sep">✦</span>
+            <span>ペット似顔絵</span><span class="sep">✦</span>
+            <span>家族の記念日</span><span class="sep">✦</span>
+            <span>卒業・入学祝い</span><span class="sep">✦</span>
+            <span>誕生日</span><span class="sep">✦</span>
+            <span>還暦・喜寿・米寿</span><span class="sep">✦</span>
+            <span>結婚祝い・金婚式</span><span class="sep">✦</span>
+            <span>退職祝い</span><span class="sep">✦</span>
+            <span>出産内祝い</span><span class="sep">✦</span>
+            <span>ペット似顔絵</span><span class="sep">✦</span>
+            <span>家族の記念日</span><span class="sep">✦</span>
+            <span>卒業・入学祝い</span><span class="sep">✦</span>
+        </div>
+    </div>
+
+    <!-- ===== ABOUT ===== -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="section-header" data-reveal>
+                <div class="section-label">似顔絵について</div>
+                <h2 class="section-title">写真から生まれる、<br class="sp-br"><em>温かい一枚</em></h2>
+                <p class="section-sub">色紙に一から手描きで仕上げる似顔絵。AIにはない、筆の温もりを大切な人へ</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-features" data-reveal>
+                    <div class="feature-card">
+                        <div class="feature-icon-wrap">🎨</div>
+                        <h3>色紙に、ゼロから手描き</h3>
+                        <p>生成AIも使わず、色紙に一から手描きで仕上げます。一枚に込めた筆の温もりが、もらう人の心に届きます。</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon-wrap">📸</div>
+                        <h3>写真を送るだけで完成</h3>
+                        <p>ご購入後に写真をお送りいただくだけ。特別なスキルは一切不要、どなたでも簡単にご注文できます。</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon-wrap">✏️</div>
+                        <h3>下書きチェック付き</h3>
+                        <p>完成前に下書きをご確認いただけます。イメージと違う場合も1回無料で修正対応いたします。</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon-wrap">🎀</div>
+                        <h3>送料無料・ラッピング無料</h3>
+                        <p>プレゼント用のラッピングも無料でおつけします。そのまま贈れる状態でお届けします。</p>
+                    </div>
+                </div>
+                <div class="about-artist" data-reveal>
+                    <div class="artist-card">
+                        <div class="artist-avatar">🎨</div>
+                        <div class="artist-info">
+                            <h3 class="artist-name">アトリエヒロ</h3>
+                            <p class="artist-desc">
+                                色紙に一筆ずつ、手描きで似顔絵を制作しています。<br>
+                                生成AIにはない、人の手だけが宿す温もりをお届けすることが私の喜びです。<br><br>
+                                還暦・喜寿などの長寿祝いから、結婚・出産・誕生日まで、人生の節目を彩る似顔絵をぜひお任せください。
+                            </p>
+                            <div class="artist-stats">
+                                <div class="astat">
+                                    <span class="astat-n">1,000<small>+</small></span>
+                                    <span class="astat-l">制作実績</span>
+                                </div>
+                                <div class="astat">
+                                    <span class="astat-n">★4.9</span>
+                                    <span class="astat-l">平均評価</span>
+                                </div>
+                                <div class="astat">
+                                    <span class="astat-n">全国</span>
+                                    <span class="astat-l">配送対応</span>
+                                </div>
+                            </div>
+                            <a href="https://atelierstore.theshop.jp/" class="btn-outline" target="_blank"
+                                rel="noopener">ショップを見る →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== GALLERY / SAMPLES ===== -->
+    <section class="samples-section" id="samples">
+        <div class="container">
+            <div class="section-header" data-reveal>
+                <div class="section-label">作品ギャラリー</div>
+                <h2 class="section-title">実際の<em>作品例</em>をご覧ください</h2>
+                <p class="section-sub">温かい似顔絵がどのように仕上がるか、参考作品でご確認いただけます</p>
+            </div>
+        </div>
+        <div class="gallery-scroll-wrap">
+            <div class="gallery-scroll" id="galleryScroll">
+                <div class="gallery-card">
+                    <img src="portrait_samples.png" alt="似顔絵作品例 – ご家族" loading="lazy" />
+                    <div class="gallery-tag">家族・記念日</div>
+                </div>
+                <div class="gallery-card">
+                    <img src="hero_img.png" alt="似顔絵作品例 – 長寿祝い" loading="lazy" />
+                    <div class="gallery-tag">還暦・長寿祝い</div>
+                </div>
+                <div class="gallery-card">
+                    <img src="portrait_samples.png" alt="似顔絵作品例 – カップル" loading="lazy" />
+                    <div class="gallery-tag">結婚・カップル</div>
+                </div>
+                <div class="gallery-card">
+                    <img src="hero_img.png" alt="似顔絵作品例 – 誕生日" loading="lazy" />
+                    <div class="gallery-tag">誕生日プレゼント</div>
+                </div>
+                <div class="gallery-card">
+                    <img src="portrait_samples.png" alt="似顔絵作品例 – ペット" loading="lazy" />
+                    <div class="gallery-tag">ペット似顔絵</div>
+                </div>
+            </div>
+        </div>
+        <div class="gallery-cta" data-reveal>
+            <p>もっと多くの作品を見たい方はショップをチェック！</p>
+            <a href="https://atelierstore.theshop.jp/" class="btn-main" target="_blank" rel="noopener">ショップで全作品を見る</a>
+        </div>
+    </section>
+
+    <!-- ===== MENU / PRICING ===== -->
+    <section class="menu-section" id="menu">
+        <div class="container">
+            <div class="section-header" data-reveal>
+                <div class="section-label">料金メニュー</div>
+                <h2 class="section-title">わかりやすい<em>料金表</em></h2>
+                <p class="section-sub">全商品送料無料・ラッピング無料。人数に応じてお選びください</p>
+            </div>
+
+            <div class="menu-grid" data-reveal>
+
+                <div class="menu-card menu-card--popular menu-card--1">
+                    <div class="menu-pop-badge">人気No.1</div>
+                    <div class="menu-icon">
+                        <svg viewBox="0 0 100 100" class="line-art">
+                            <circle cx="50" cy="35" r="20" />
+                            <path d="M 25 85 Q 50 60 75 85" />
+                            <path d="M 40 30 Q 50 40 60 30" />
+                            <circle cx="43" cy="35" r="2.5" fill="currentColor" stroke="none" />
+                            <circle cx="57" cy="35" r="2.5" fill="currentColor" stroke="none" />
+                            <path d="M 45 42 Q 50 48 55 42" />
+                        </svg>
+                    </div>
+                    <h3 class="menu-title">1名様</h3>
+                    <div class="menu-size">色紙サイズ (242×272mm)</div>
+                    <div class="menu-price">
+                        <span class="menu-price-regular">¥8,980</span>
+                        <span class="menu-price-sale">¥7,980<small>（税込）</small></span>
+                    </div>
+                    <ul class="menu-list">
+                        <li>✓ お一人の似顔絵</li>
+                        <li>✓ 下書きチェック付き</li>
+                        <li>✓ 修正1回無料</li>
+                        <li>✓ 送料・ラッピング無料</li>
+                        <li>✓ データ納品 or 印刷物郵送</li>
+                    </ul>
+                    <a href="https://atelierstore.theshop.jp/" class="btn-menu-order" target="_blank"
+                        rel="noopener">注文する</a>
+                </div>
+
+                <div class="menu-card menu-card--2">
+                    <div class="menu-icon">
+                        <svg viewBox="0 0 100 100" class="line-art">
+                            <circle cx="35" cy="40" r="16" />
+                            <path d="M 10 90 Q 35 60 55 90" />
+                            <circle cx="29" cy="40" r="2" fill="currentColor" stroke="none" />
+                            <circle cx="41" cy="40" r="2" fill="currentColor" stroke="none" />
+                            <path d="M 31 46 Q 35 50 39 46" />
+                            <circle cx="65" cy="35" r="18" />
+                            <path d="M 45 90 Q 65 55 90 90" />
+                            <circle cx="58" cy="35" r="2" fill="currentColor" stroke="none" />
+                            <circle cx="72" cy="35" r="2" fill="currentColor" stroke="none" />
+                            <path d="M 61 42 Q 65 48 69 42" />
+                        </svg>
+                    </div>
+                    <h3 class="menu-title">2名様</h3>
+                    <div class="menu-size">色紙サイズ (242×272mm)</div>
+                    <div class="menu-price">
+                        <span class="menu-price-sale">¥9,980<small>（税込）</small></span>
+                    </div>
+                    <ul class="menu-list">
+                        <li>✓ お二人の似顔絵</li>
+                        <li>✓ 下書きチェック付き</li>
+                        <li>✓ 修正1回無料</li>
+                        <li>✓ 送料・ラッピング無料</li>
+                        <li>✓ データ納品 or 印刷物郵送</li>
+                    </ul>
+                    <a href="https://atelierstore.theshop.jp/" class="btn-menu-order" target="_blank"
+                        rel="noopener">注文する</a>
+                </div>
+
+                <div class="menu-card menu-card--3">
+                    <div class="menu-icon">
+                        <svg viewBox="0 0 100 100" class="line-art">
+                            <circle cx="28" cy="35" r="14" />
+                            <path d="M 5 85 Q 28 55 45 85" />
+                            <circle cx="23" cy="35" r="1.5" fill="currentColor" stroke="none" />
+                            <circle cx="33" cy="35" r="1.5" fill="currentColor" stroke="none" />
+                            <path d="M 25 40 Q 28 44 31 40" />
+                            <circle cx="72" cy="35" r="14" />
+                            <path d="M 55 85 Q 72 55 95 85" />
+                            <circle cx="67" cy="35" r="1.5" fill="currentColor" stroke="none" />
+                            <circle cx="77" cy="35" r="1.5" fill="currentColor" stroke="none" />
+                            <path d="M 69 40 Q 72 44 75 40" />
+                            <circle cx="50" cy="65" r="10" />
+                            <path d="M 35 95 Q 50 78 65 95" />
+                            <circle cx="46" cy="65" r="1" fill="currentColor" stroke="none" />
+                            <circle cx="54" cy="65" r="1" fill="currentColor" stroke="none" />
+                            <path d="M 48 69 Q 50 72 52 69" />
+                        </svg>
+                    </div>
+                    <h3 class="menu-title">3名様〜</h3>
+                    <div class="menu-size">色紙サイズ (242×272mm)</div>
+                    <div class="menu-price">
+                        <span class="menu-price-sale">¥11,980〜<small>（税込）</small></span>
+                    </div>
+                    <ul class="menu-list">
+                        <li>✓ 3名以上のご家族</li>
+                        <li>✓ ペット追加オプションあり</li>
+                        <li>✓ 修正1回無料</li>
+                        <li>✓ 送料・ラッピング無料</li>
+                        <li>✓ データ納品 or 印刷物郵送</li>
+                    </ul>
+                    <a href="https://atelierstore.theshop.jp/" class="btn-menu-order" target="_blank"
+                        rel="noopener">注文する</a>
+                </div>
+
+                <div class="menu-card menu-card--special menu-card--4">
+                    <div class="menu-icon">
+                        <svg viewBox="0 0 100 100" class="line-art">
+                            <circle cx="65" cy="30" r="14" />
+                            <circle cx="60" cy="30" r="2" fill="currentColor" stroke="none" />
+                            <circle cx="70" cy="30" r="2" fill="currentColor" stroke="none" />
+                            <path d="M 61 35 Q 65 39 69 35" />
+                            <path d="M 65 44 L 50 70 L 65 92" />
+                            <path d="M 50 70 L 25 80" />
+                            <path d="M 35 45 L 65 44 L 85 58" />
+                            <path d="M 10 30 L 35 30" />
+                            <path d="M 15 45 L 40 45" />
+                            <path d="M 5 60 L 30 60" />
+                        </svg>
+                    </div>
+                    <h3 class="menu-title">お急ぎプラン</h3>
+                    <div class="menu-size">お急ぎ納品（下書きチェックなし）</div>
+                    <div class="menu-price">
+                        <span class="menu-price-sale">要相談<small>（割増料金あり）</small></span>
+                    </div>
+                    <ul class="menu-list">
+                        <li>✓ 急ぎのプレゼントに</li>
+                        <li>✓ 下書きチェックを省略</li>
+                        <li>✓ 最短納期でご対応</li>
+                        <li>✓ 送料・ラッピング無料</li>
+                        <li>✓ まずはご相談ください</li>
+                    </ul>
+                    <a href="#contact" class="btn-menu-order">相談する</a>
+                </div>
+
+            </div>
+
+            <div class="menu-note" data-reveal>
+                <div class="note-item">
+                    <span class="note-icon">📦</span>
+                    <span>額縁・フレーム入りはオプションにてご対応可能です（別途ご相談）</span>
+                </div>
+                <div class="note-item">
+                    <span class="note-icon">🐾</span>
+                    <span>ペット（犬・猫など）の追加も対応しています。ご注文時にお知らせください。</span>
+                </div>
+                <div class="note-item">
+                    <span class="note-icon">🚗</span>
+                    <span>大切な車・自転車などのモチーフ追加もご相談ください。</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ===== FLOW ===== -->
+    <section class="flow-section" id="flow">
+        <div class="container">
+            <div class="section-header" data-reveal>
+                <div class="section-label">ご注文の流れ</div>
+                <h2 class="section-title">かんたん<em>4ステップ</em>で完成</h2>
+                <p class="section-sub">ネットが苦手な方も安心。写真を送るだけで似顔絵ができます</p>
+            </div>
+            <div class="flow-steps">
+                <div class="flow-step" data-reveal>
+                    <div class="flow-num">STEP 1</div>
+                    <div class="flow-icon-wrap">🛒</div>
+                    <h3>ショップで購入</h3>
+                    <p>お人数・プランを選んでご購入ください。クレジットカード・各種決済に対応しています。</p>
+                </div>
+                <div class="flow-arrow" aria-hidden="true">›</div>
+                <div class="flow-step" data-reveal>
+                    <div class="flow-num">STEP 2</div>
+                    <div class="flow-icon-wrap">📸</div>
+                    <h3>写真を送る</h3>
+                    <p>購入後にお送りするフォームから、似顔絵にしたい方の写真をご送付ください。</p>
+                </div>
+                <div class="flow-arrow" aria-hidden="true">›</div>
+                <div class="flow-step" data-reveal>
+                    <div class="flow-num">STEP 3</div>
+                    <div class="flow-icon-wrap">✏️</div>
+                    <h3>下書き確認</h3>
+                    <p>完成前に下書きをお送りします。「ここをもう少し…」など修正1回まで無料で対応。</p>
+                </div>
+                <div class="flow-arrow" aria-hidden="true">›</div>
+                <div class="flow-step" data-reveal>
+                    <div class="flow-num">STEP 4</div>
+                    <div class="flow-icon-wrap">🎁</div>
+                    <h3>受け取る・贈る</h3>
+                    <p>ラッピングして丁寧にお届け。データでの納品にも対応しています。</p>
+                </div>
+            </div>
+            <div class="flow-cta" data-reveal>
+                <a href="https://atelierstore.theshop.jp/" class="btn-main" target="_blank"
+                    rel="noopener">さっそく注文してみる</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== OCCASIONS ===== -->
+    <section class="occasions-section" id="occasions">
+        <div class="container">
+            <div class="section-header" data-reveal>
+                <div class="section-label">おすすめシーン</div>
+                <h2 class="section-title">どんな場面でも<em>喜ばれます</em></h2>
+                <p class="section-sub">贈って良かった、もらって嬉しい。大切な人の笑顔を似顔絵で</p>
+            </div>
+            <div class="occasions-grid">
+                <div class="occasion-card" data-reveal>
+                    <div class="occ-emoji">🌸</div>
+                    <h3>還暦・喜寿・米寿</h3>
+                    <p>人生の節目のお祝いに。親・祖父母への感謝を込めた特別な贈り物として人気No.1。</p>
+                    <span class="occ-tag">長寿祝い</span>
+                </div>
+                <div class="occasion-card" data-reveal>
+                    <div class="occ-emoji">🎂</div>
+                    <h3>誕生日</h3>
+                    <p>毎年の誕生日をもっと特別に。世界にひとつのプレゼントでサプライズを。</p>
+                    <span class="occ-tag">誕生日</span>
+                </div>
+                <div class="occasion-card" data-reveal>
+                    <div class="occ-emoji">💒</div>
+                    <h3>結婚祝い・金婚式</h3>
+                    <p>ご夫婦の素敵なお姿を似顔絵に。長く大切にしていただける思い出の品として。</p>
+                    <span class="occ-tag">結婚記念日</span>
+                </div>
+                <div class="occasion-card" data-reveal>
+                    <div class="occ-emoji">🎉</div>
+                    <h3>退職・卒業祝い</h3>
+                    <p>長年お世話になった方への感謝の気持ちを、笑顔あふれる似顔絵で伝えましょう。</p>
+                    <span class="occ-tag">退職・卒業</span>
+                </div>
+                <div class="occasion-card" data-reveal>
+                    <div class="occ-emoji">👶</div>
+                    <h3>出産・誕生記念</h3>
+                    <p>産まれたばかりの赤ちゃんの似顔絵。成長とともに大切にしていただける贈り物に。</p>
+                    <span class="occ-tag">出産祝い</span>
+                </div>
+                <div class="occasion-card" data-reveal>
+                    <div class="occ-emoji">🐾</div>
+                    <h3>ペットの似顔絵</h3>
+                    <p>大切な家族の一員、ペットの似顔絵も大歓迎。愛犬・愛猫を温かく描きます。</p>
+                    <span class="occ-tag">ペット</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TESTIMONIALS ===== -->
+    <section class="reviews-section" id="reviews">
+        <div class="container">
+            <div class="section-header" data-reveal>
+                <div class="section-label">お客様の声</div>
+                <h2 class="section-title">喜びの<em>レビュー</em></h2>
+                <p class="section-sub">お客様からいただいた嬉しいお声の一部をご紹介します</p>
+            </div>
+            <div class="reviews-grid">
+                <div class="review-card" data-reveal>
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">「父の還暦祝いにと注文しました。とても似ていてびっくり！父も母も大喜びで、今も玄関に飾っています。本当にありがとうございました！」</p>
+                    <div class="review-meta">
+                        <strong>40代・女性</strong>
+                        <span>還暦祝い / 1名様</span>
+                    </div>
+                </div>
+                <div class="review-card" data-reveal>
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">「夫婦の結婚記念日に。温かい絵のタッチが大好きです。下書きチェックで細かくお願いできて安心でした。来年も絶対利用します！」</p>
+                    <div class="review-meta">
+                        <strong>50代・女性</strong>
+                        <span>金婚式 / 2名様</span>
+                    </div>
+                </div>
+                <div class="review-card" data-reveal>
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">「退職する上司へのプレゼントに購入。似顔絵を見て涙ぐんでいたようで、贈って本当によかったです。ラッピングも丁寧でした。」</p>
+                    <div class="review-meta">
+                        <strong>30代・男性</strong>
+                        <span>退職祝い / 1名様</span>
+                    </div>
+                </div>
+                <div class="review-card" data-reveal>
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">「愛犬の似顔絵をお願いしました。特徴をしっかり捉えてくれていてとても可愛い！大切に飾っています。対応も丁寧で感動しました。」</p>
+                    <div class="review-meta">
+                        <strong>30代・女性</strong>
+                        <span>ペット似顔絵</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <div class="section-header" data-reveal>
+                <div class="section-label">よくある質問</div>
+                <h2 class="section-title">ご注文前の<em>疑問を解決</em></h2>
+            </div>
+            <div class="faq-list" data-reveal>
+
+                <div class="faq-item" id="faqItem1">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faqAns1"
+                        onclick="toggleFAQ('faqItem1')">
+                        <span>どんな写真を送ればいいですか？</span>
+                        <span class="faq-arrow">▾</span>
+                    </button>
+                    <div class="faq-answer" id="faqAns1">
+                        顔がはっきり写っている写真をご送付ください。スマートフォンで撮影した写真で構いません。複数枚あるとより似せやすくなります。帽子などで顔が隠れている写真はご遠慮ください。
+                    </div>
+                </div>
+
+                <div class="faq-item" id="faqItem2">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faqAns2"
+                        onclick="toggleFAQ('faqItem2')">
+                        <span>完成まで何日かかりますか？</span>
+                        <span class="faq-arrow">▾</span>
+                    </button>
+                    <div class="faq-answer" id="faqAns2">
+                        写真をお送りいただいてから、通常7〜14日程度で納品いたします（込み具合により前後します）。お急ぎプランもございますので、お急ぎの方はご相談ください。
+                    </div>
+                </div>
+
+                <div class="faq-item" id="faqItem3">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faqAns3"
+                        onclick="toggleFAQ('faqItem3')">
+                        <span>修正はできますか？</span>
+                        <span class="faq-arrow">▾</span>
+                    </button>
+                    <div class="faq-answer" id="faqAns3">
+                        はい、下書き段階で1回まで無料で修正いたします。「もう少し笑顔にして」「眼鏡の形を変えて」など、お気軽にお申し付けください。
+                    </div>
+                </div>
+
+                <div class="faq-item" id="faqItem4">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faqAns4"
+                        onclick="toggleFAQ('faqItem4')">
+                        <span>データでの受け取りはできますか？</span>
+                        <span class="faq-arrow">▾</span>
+                    </button>
+                    <div class="faq-answer" id="faqAns4">
+                        はい、デジタルデータ（JPEGまたはPNG）での納品も可能です。印刷物（色紙）の郵送との組み合わせもお選びいただけます。
+                    </div>
+                </div>
+
+                <div class="faq-item" id="faqItem5">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faqAns5"
+                        onclick="toggleFAQ('faqItem5')">
+                        <span>ペットや車も描いてもらえますか？</span>
+                        <span class="faq-arrow">▾</span>
+                    </button>
+                    <div class="faq-answer" id="faqAns5">
+                        はい、大切なペット（犬・猫など）や思い出の車・自転車なども描くことが可能です。ご注文時またはお問い合わせ時にお知らせください。追加料金については内容によりご相談させていただきます。
+                    </div>
+                </div>
+
+                <div class="faq-item" id="faqItem6">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faqAns6"
+                        onclick="toggleFAQ('faqItem6')">
+                        <span>支払い方法は何がありますか？</span>
+                        <span class="faq-arrow">▾</span>
+                    </button>
+                    <div class="faq-answer" id="faqAns6">
+                        クレジットカード（VISA・Mastercard・JCB・AMEX）、PayPay、コンビニ決済、銀行振込など、各種お支払い方法に対応しております。ショップページにてご確認ください。
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="section-header" data-reveal>
+                <div class="section-label">お問い合わせ</div>
+                <h2 class="section-title">お気軽に<em>ご相談ください</em></h2>
+                <p class="section-sub">ご注文前の質問・ご要望など、なんでもお気軽にどうぞ</p>
+            </div>
+            <div class="contact-grid" data-reveal>
+                <div class="contact-info">
+                    <div class="contact-method">
+                        <div class="cm-icon">🛒</div>
+                        <div class="cm-text">
+                            <strong>ショップからのご注文</strong>
+                            <p>ご注文・決済はショップサイトにて承ります。</p>
+                            <a href="https://atelierstore.theshop.jp/" class="btn-outline" target="_blank"
+                                rel="noopener">ショップへ進む →</a>
+                        </div>
+                    </div>
+                    <div class="contact-method">
+                        <div class="cm-icon">💬</div>
+                        <div class="cm-text">
+                            <strong>お問い合わせフォーム</strong>
+                            <p>ご質問・ご相談はショップのお問い合わせフォームより受付中。24時間受付、翌営業日以内に返信します。</p>
+                            <a href="https://atelierstore.theshop.jp/contact" class="btn-outline" target="_blank"
+                                rel="noopener">お問い合わせする →</a>
+                        </div>
+                    </div>
+                    <div class="contact-info-note">
+                        <p>✓ ご注文前のご相談も大歓迎</p>
+                        <p>✓ 急ぎのご注文もまずご連絡ください</p>
+                        <p>✓ 似顔絵のスタイル・内容のご要望もどうぞ</p>
+                    </div>
+                </div>
+                <div class="contact-cta-box">
+                    <div class="ctabox-icon">🎨</div>
+                    <h3>今すぐ注文してみませんか？</h3>
+                    <p>大切な方への特別なプレゼントに。手描きの温かみある似顔絵をお届けします。</p>
+                    <div class="ctabox-perks">
+                        <span>🚚 送料無料</span>
+                        <span>🎀 ラッピング無料</span>
+                        <span>✏️ 修正1回無料</span>
+                    </div>
+                    <a href="https://atelierstore.theshop.jp/" class="btn-main" target="_blank"
+                        rel="noopener">ショップで注文する</a>
+                    <p class="ctabox-coupon">🎟️ 最大¥2,000 OFFクーポン配布中</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="footer-logo">🎨 アトリエヒロ</div>
+                    <p class="footer-catch">手描き似顔絵ギフト専門店</p>
+                    <p class="footer-desc">誕生日・還暦・結婚祝い…<br />大切な人への世界にひとつの贈り物</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-col">
+                        <h4>メニュー</h4>
+                        <a href="#about">似顔絵について</a>
+                        <a href="#samples">作品ギャラリー</a>
+                        <a href="#menu">料金メニュー</a>
+                        <a href="#flow">ご注文の流れ</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>おすすめシーン</h4>
+                        <a href="#occasions">還暦・長寿祝い</a>
+                        <a href="#occasions">誕生日</a>
+                        <a href="#occasions">結婚祝い</a>
+                        <a href="#occasions">退職祝い</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>サポート</h4>
+                        <a href="#faq">よくある質問</a>
+                        <a href="https://atelierstore.theshop.jp/contact" target="_blank">お問い合わせ</a>
+                        <a href="https://atelierstore.theshop.jp/" target="_blank">ショップへ</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-divider"></div>
+            <div class="footer-bottom">
+                <p>© 2025 アトリエヒロ. All Rights Reserved.</p>
+                <a href="https://atelierstore.theshop.jp/" target="_blank" class="footer-shop-link">ショップはこちら →</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- BACK TO TOP -->
+    <button class="back-to-top" id="backToTop" aria-label="ページトップへ戻る">▲</button>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
