@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>作品ギャラリー | アトリエヒロ</title>
+    <meta name="description" content="アトリエヒロの手描き似顔絵作品集。お客様からご注文いただいた色紙似顔絵を掲載しています。" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300;400;500;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        /* ── ギャラリーページ専用スタイル ── */
+        .gallery-page-hero {
+            padding: 156px 20px 28px;
+            text-align: center;
+            background: linear-gradient(160deg, #fff8f3 0%, #ffe4d8 40%, #fff1e0 100%);
+        }
+
+        .gallery-page-hero .section-header {
+            margin-bottom: 0;
+        }
+
+        .gallery-page-hero .section-title {
+            font-size: clamp(1.3rem, 3.5vw, 2rem);
+            margin-bottom: 8px;
+        }
+
+        .gallery-page-hero .section-sub {
+            font-size: 0.9rem;
+        }
+
+        .gallery-page-section {
+            background: var(--cream);
+            padding: 48px 0 100px;
+        }
+
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 12px;
+        }
+
+        .work-item {
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+            border: 3px solid #fff;
+            background: var(--cream);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            position: relative;
+            aspect-ratio: 1 / 1;
+        }
+
+        .work-item:hover {
+            transform: scale(1.02) translateY(-4px);
+            box-shadow: 0 16px 40px rgba(255, 107, 107, 0.2);
+        }
+
+        .work-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* ── ライトボックス ── */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 300;
+            background: rgba(0, 0, 0, 0.9);
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.2s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
+
+        .lightbox.open {
+            display: flex;
+        }
+
+        .lightbox-img {
+            max-width: 80vw;
+            max-height: 82vh;
+            border-radius: var(--radius-md);
+            object-fit: contain;
+            box-shadow: 0 12px 60px rgba(0, 0, 0, 0.5);
+            transition: opacity 0.15s ease;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            color: #fff;
+            font-size: 2rem;
+            font-weight: 700;
+            cursor: pointer;
+            background: rgba(255,255,255,0.15);
+            border: none;
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+
+        .lightbox-close:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .lightbox-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #fff;
+            font-size: 2rem;
+            background: rgba(255,255,255,0.15);
+            border: none;
+            border-radius: 50%;
+            width: 52px;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.2s;
+            user-select: none;
+        }
+
+        .lightbox-arrow:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .lightbox-prev { left: 16px; }
+        .lightbox-next { right: 16px; }
+
+        .lightbox-counter {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255,255,255,0.7);
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        @media (max-width: 640px) {
+            .lightbox-img {
+                max-width: 94vw;
+                max-height: 75vh;
+            }
+            .lightbox-arrow {
+                width: 40px;
+                height: 40px;
+                font-size: 1.5rem;
+            }
+            .lightbox-prev { left: 6px; }
+            .lightbox-next { right: 6px; }
+        }
+
+        /* ── モバイル調整 ── */
+        @media (max-width: 640px) {
+            .gallery-page-hero {
+                padding: 148px 16px 48px;
+            }
+
+            .works-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 8px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .works-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ===== COUPON BANNER ===== -->
+    <div class="coupon-banner">
+        <div class="coupon-inner">
+            <div class="coupon-left">
+                <span class="coupon-tag">🎟️ 限定クーポン</span>
+                <span class="coupon-text">最大 <strong>¥2,000 OFF</strong><span class="coupon-pc"> クーポン配布中！</span></span>
+            </div>
+            <a href="https://atelierstore.theshop.jp/" class="coupon-btn" target="_blank" rel="noopener">クーポンを取得 →</a>
+        </div>
+    </div>
+
+    <!-- ===== HEADER ===== -->
+    <header class="site-header" id="siteHeader">
+        <div class="header-inner">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">🎨</span>
+                <span class="logo-text">アトリエ<span class="logo-accent">ヒロ</span></span>
+            </a>
+            <nav class="nav-links" id="navLinks">
+                <a href="index.html#about" class="nav-link">似顔絵について</a>
+                <a href="gallery.html" class="nav-link" style="color:var(--coral);">作品ギャラリー</a>
+                <a href="index.html#menu" class="nav-link">料金メニュー</a>
+                <a href="index.html#flow" class="nav-link">ご注文の流れ</a>
+                <a href="index.html#occasions" class="nav-link">おすすめシーン</a>
+                <a href="index.html#faq" class="nav-link">よくある質問</a>
+            </nav>
+            <a href="https://atelierstore.theshop.jp/" class="header-order-btn" target="_blank" rel="noopener">
+                今すぐ注文 →
+            </a>
+            <button class="hamburger" id="hamburger" aria-label="メニューを開く">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-close" id="mobileClose" aria-label="メニューを閉じる">✕</button>
+        <nav class="mobile-nav">
+            <a href="index.html#about" class="mobile-nav-link">似顔絵について</a>
+            <a href="gallery.html" class="mobile-nav-link">作品ギャラリー</a>
+            <a href="index.html#menu" class="mobile-nav-link">料金メニュー</a>
+            <a href="index.html#flow" class="mobile-nav-link">ご注文の流れ</a>
+            <a href="index.html#occasions" class="mobile-nav-link">おすすめシーン</a>
+            <a href="index.html#faq" class="mobile-nav-link">よくある質問</a>
+        </nav>
+        <a href="https://atelierstore.theshop.jp/" class="mobile-order-btn" target="_blank">🛒 今すぐ注文する</a>
+    </div>
+
+    <!-- ===== ページヒーロー ===== -->
+    <section class="gallery-page-hero">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">作品ギャラリー</div>
+                <h1 class="section-title">手描き<em>似顔絵</em>作品集</h1>
+                <p class="section-sub">色紙に一から手描きで仕上げた作品の一部をご紹介します</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 作品グリッド ===== -->
+    <section class="gallery-page-section">
+        <div class="container">
+            <div class="works-grid" id="worksGrid">
+                <!-- gallery-data.js の内容をJSで表示 -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section style="background: var(--warm-white); padding: 64px 20px; text-align: center;">
+        <div class="section-label">ご注文はこちら</div>
+        <h2 class="section-title" style="margin: 16px 0 12px;">あなただけの<em>一枚</em>を</h2>
+        <p class="section-sub" style="margin-bottom: 32px;">写真を送るだけで、世界にひとつの手描き似顔絵をお届けします</p>
+        <a href="https://atelierstore.theshop.jp/" class="btn-main" target="_blank" rel="noopener">🛒 ショップで注文する</a>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="footer-logo">🎨 アトリエヒロ</div>
+                    <p class="footer-catch">手描き似顔絵ギフト専門店</p>
+                    <p class="footer-desc">誕生日・還暦・結婚祝い…<br />大切な人への世界にひとつの贈り物</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-col">
+                        <h4>メニュー</h4>
+                        <a href="index.html#about">似顔絵について</a>
+                        <a href="gallery.html">作品ギャラリー</a>
+                        <a href="index.html#menu">料金メニュー</a>
+                        <a href="index.html#flow">ご注文の流れ</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>おすすめシーン</h4>
+                        <a href="index.html#occasions">還暦・長寿祝い</a>
+                        <a href="index.html#occasions">誕生日</a>
+                        <a href="index.html#occasions">結婚祝い</a>
+                        <a href="index.html#occasions">退職祝い</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>サポート</h4>
+                        <a href="index.html#faq">よくある質問</a>
+                        <a href="https://atelierstore.theshop.jp/contact" target="_blank">お問い合わせ</a>
+                        <a href="https://atelierstore.theshop.jp/" target="_blank">ショップへ</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-divider"></div>
+            <div class="footer-bottom">
+                <p>© 2025 アトリエヒロ. All Rights Reserved.</p>
+                <a href="https://atelierstore.theshop.jp/" target="_blank" class="footer-shop-link">ショップはこちら →</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- BACK TO TOP -->
+    <button class="back-to-top" id="backToTop" aria-label="ページトップへ戻る">▲</button>
+
+    <!-- DELIVERY BADGE -->
+    <div class="delivery-badge" id="deliveryBadge">
+        <div class="delivery-info">
+            <span class="delivery-label">現在の納期</span>
+            <span class="delivery-date" id="deliveryDate">読込中…</span>
+        </div>
+        <a href="https://atelierstore.theshop.jp/" class="delivery-order-btn" target="_blank" rel="noopener">注文はこちら</a>
+    </div>
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose">✕</button>
+        <button class="lightbox-arrow lightbox-prev" id="lightboxPrev">‹</button>
+        <img class="lightbox-img" id="lightboxImg" src="" alt="" />
+        <button class="lightbox-arrow lightbox-next" id="lightboxNext">›</button>
+        <div class="lightbox-counter" id="lightboxCounter"></div>
+    </div>
+
+    <script src="delivery.js"></script>
+    <script src="gallery-data.js"></script>
+    <script>
+        // ── 作品グリッド生成 ──
+        const grid = document.getElementById('worksGrid');
+        let currentIndex = 0;
+
+        if (typeof GALLERY_IMAGES !== 'undefined' && GALLERY_IMAGES.length > 0) {
+            GALLERY_IMAGES.forEach((item, i) => {
+                const div = document.createElement('div');
+                div.className = 'work-item';
+                div.innerHTML = `<img src="${item.src}" alt="似顔絵作品 ${i + 1}" loading="lazy" />`;
+                div.addEventListener('click', () => openLightbox(i));
+                grid.appendChild(div);
+            });
+        }
+
+        // ── ライトボックス ──
+        const lightbox   = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const counter    = document.getElementById('lightboxCounter');
+
+        function openLightbox(index) {
+            currentIndex = index;
+            showImage();
+            lightbox.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function showImage() {
+            lightboxImg.style.opacity = '0';
+            setTimeout(() => {
+                lightboxImg.src = GALLERY_IMAGES[currentIndex].src;
+                lightboxImg.style.opacity = '1';
+            }, 120);
+            counter.textContent = (currentIndex + 1) + ' / ' + GALLERY_IMAGES.length;
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + GALLERY_IMAGES.length) % GALLERY_IMAGES.length;
+            showImage();
+        }
+
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % GALLERY_IMAGES.length;
+            showImage();
+        }
+
+        document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+        document.getElementById('lightboxPrev').addEventListener('click', prevImage);
+        document.getElementById('lightboxNext').addEventListener('click', nextImage);
+        lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape')      closeLightbox();
+            if (e.key === 'ArrowLeft')  prevImage();
+            if (e.key === 'ArrowRight') nextImage();
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>

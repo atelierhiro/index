@@ -291,7 +291,7 @@ button {
 .mobile-menu {
     position: fixed;
     inset: 0;
-    z-index: 99;
+    z-index: 101;
     background: var(--cream);
     padding: 100px 32px 40px;
     display: flex;
@@ -1718,6 +1718,13 @@ button {
     min-width: 100px;
 }
 
+.delivery-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+
 .delivery-label {
     font-size: 0.68rem;
     font-weight: 700;
@@ -1729,6 +1736,37 @@ button {
     font-size: 1rem;
     font-weight: 700;
     color: var(--text);
+}
+
+.delivery-order-btn {
+    display: none;
+}
+
+@media (max-width: 640px) {
+    .delivery-badge {
+        flex-direction: row;
+        align-items: center;
+        padding: 8px 14px;
+        gap: 12px;
+        min-width: auto;
+    }
+
+    .delivery-order-btn {
+        display: inline-block;
+        background: var(--coral);
+        color: #fff;
+        font-size: 0.82rem;
+        font-weight: 700;
+        padding: 8px 16px;
+        border-radius: var(--radius-pill);
+        white-space: nowrap;
+        box-shadow: 0 2px 10px rgba(255, 107, 107, 0.35);
+        transition: background 0.2s;
+    }
+
+    .delivery-order-btn:hover {
+        background: var(--coral-dk);
+    }
 }
 
 /* ── BACK TO TOP ─────────────────────────────────── */
