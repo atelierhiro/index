@@ -81,6 +81,51 @@ document.getElementById('backToTop').addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
+/* ── IMAGE TICKER ────────────────────────────────── */
+const tickerTrack = document.getElementById('imageTickerTrack');
+const imageTicker = document.getElementById('imageTicker');
+if (tickerTrack) {
+    const GITHUB_API = 'https://api.github.com/repos/atelierhiro/index/contents/portraits';
+    const IMAGE_EXTS = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+
+    fetch(GITHUB_API)
+        .then(r => r.json())
+        .then(files => {
+            const images = files
+                .filter(f => IMAGE_EXTS.includes(f.name.split('.').pop().toLowerCase()))
+                .sort((a, b) => a.name.localeCompare(b.name, 'ja'));
+
+            if (images.length === 0) {
+                imageTicker.style.display = 'none';
+                return;
+            }
+
+            // シームレスループのため2セット分追加
+            [...images, ...images].forEach(file => {
+                const img = document.createElement('img');
+                img.src = file.download_url;
+                img.alt = '似顔絵作品';
+                img.loading = 'lazy';
+                tickerTrack.appendChild(img);
+            });
+
+            // 枚数に応じてアニメーション速度を調整（約40px/秒）
+            const ITEM_WIDTH = 132; // 120px + 12px gap
+            const totalWidth = images.length * ITEM_WIDTH;
+            const duration = Math.round(totalWidth / 40);
+            tickerTrack.style.animationDuration = duration + 's';
+
+            // クリックでギャラリーページへ（アニメーション中でも確実に動作）
+            imageTicker.style.cursor = 'pointer';
+            imageTicker.addEventListener('click', () => {
+                window.location.href = 'gallery.html';
+            });
+        })
+        .catch(() => {
+            imageTicker.style.display = 'none';
+        });
+}
+
 /* ── DELIVERY DATE ───────────────────────────────── */
 if (typeof DELIVERY_DATE !== 'undefined') {
     document.getElementById('deliveryDate').textContent = DELIVERY_DATE;

@@ -957,6 +957,37 @@ button {
     margin-bottom: 16px;
 }
 
+/* ── IMAGE TICKER ────────────────────────────────── */
+.image-ticker-wrap {
+    overflow: hidden;
+    background: var(--cream);
+    padding: 20px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.image-ticker-track {
+    display: flex;
+    gap: 12px;
+    width: max-content;
+    animation: imageTicker 20s linear infinite;
+}
+
+.image-ticker-track img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: var(--radius-sm);
+    flex-shrink: 0;
+    border: 2px solid #fff;
+    box-shadow: var(--shadow-card);
+}
+
+@keyframes imageTicker {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+}
+
 /* ── MENU / PRICING ──────────────────────────────── */
 .menu-section {
     padding: 100px 0;
